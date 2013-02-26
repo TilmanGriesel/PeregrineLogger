@@ -43,7 +43,7 @@ package
 			logger.fatal('Hello', 'Fatal');
 			
 			// add some filters (only log MyClass messages)
-			PeregrineLoggerFactory.filterClasses(MyClass, 'hello');
+			PeregrineLoggerFactory.filterClasses(MyClass);
 			// maybe invert the class filter (log all expect MyClass messages)
 			//PeregrineLoggerFactory.invertClassFilter = true;
 			
