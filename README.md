@@ -39,7 +39,19 @@ Memory logging enabled:
 			logger.error('Hello', 'Error');
 			logger.fatal('Hello', 'Fatal');
 		}
-    
+
+## Filter Functions
+PeregrineLogger supports class name based filtering.
+That means, that log messages can be filtered by full qualified class names (fqcn) or Classes itself.
+
+To enable the filter, simply type ```PeregrineLoggerFactory.filterClasses(MyClass, AnotherClass);```
+or ```PeregrineLoggerFactory.filterClasses('com.pack.example::MyClass');```
+or together... it's up to you.
+
+Another function of the filter system is, that you are able to invert the filter.
+To exclude all classes defined in filterClasses() from logging,
+type  ```PeregrineLoggerFactory.invertClassFilter = true```
+
 ## How to extend
 Nothing is simple as that. Create a Class with an ```IPeregrineLogTarget``` implementation.
 
