@@ -71,4 +71,4 @@ At the moment this things are not possible:
 * More then trace log targets (if you dont wanna write your own)
 
 ## Links
-My little blog post about this at http://tilmangriesel.de/2013/02/26/peregrine-logger/
+My little blog post about this http://tilmangriesel.de/2013/02/26/peregrine-logger/
