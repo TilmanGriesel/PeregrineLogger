@@ -63,6 +63,7 @@ Add the API:
 Add your Class as a log target with the ```PeregrineLoggerFactory.addTarget``` method.
 Now you are able to access all incoming log data trough the ```PeregrineLogItem```.
 The API provides you an timestamp as number, the log level as uint, the full qualified class name as string and finally the log message as string.
+Another small and beautiful info is the tp number. The tp value defines the time past (since the first log entry was made). This is a good value to measure the application performance.
 
 ## Limitations
 At the moment this things are not possible:
