@@ -69,3 +69,6 @@ Another small and beautiful info is the tp number. The tp value defines the time
 At the moment this things are not possible:
 * Define your own log format
 * More then trace log targets (if you dont wanna write your own)
+
+## Links
+My little blog post about this at http://tilmangriesel.de/2013/02/26/peregrine-logger/
