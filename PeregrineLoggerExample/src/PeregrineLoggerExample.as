@@ -16,6 +16,7 @@ package
 		{
 			// setup log target
 			var traceTarget:PeregrineTraceTarget = new PeregrineTraceTarget();
+			traceTarget.logMemory = true;
 			PeregrineLoggerFactory.addTarget(traceTarget);
 			// setup log level
 			PeregrineLoggerFactory.logLevel(PeregrineLogLevel.ALL);
