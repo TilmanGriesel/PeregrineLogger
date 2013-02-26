@@ -1,5 +1,7 @@
 package de.unsustainable.peregrine.logger.targets
 {
+	import flash.system.System;
+	
 	import de.unsustainable.peregrine.logger.PeregrineLogItem;
 	import de.unsustainable.peregrine.logger.PeregrineLogLevel;
 	import de.unsustainable.peregrine.logger.interfaces.IPeregrineLogTarget;
@@ -59,9 +61,26 @@ package de.unsustainable.peregrine.logger.targets
 		
 		private function traceOutItem(item:PeregrineLogItem, tp:Number):void
 		{
-			trace('[' + tp + 'ms]', '[' + PeregrineLogLevel.getByID(item.level) + ']', '[' + item.fqcn + ']', item.message);
+			// create output string
+			var output:String = '';
+			if(_logMemory) output += '[' + roundDecimal((System.totalMemoryNumber / 1024) / 1024, 2) + 'mb] ';
+			output += '[' + tp + 'ms] ';
+			output += '[' + PeregrineLogLevel.getByID(item.level) + '] ';
+			output += '[' + item.fqcn + '] ';
+			output += item.message;
+			
+			// trace out
+			trace(output);
+			
+			// clean up
 			item.dispose();
 			item = null;
+		}
+		
+		public static function roundDecimal(num:Number, precision:int):Number
+		{	
+			var decimal:Number = Math.pow(10, precision);	
+			return Math.round(decimal* num) / decimal;
 		}
 	}
 }
