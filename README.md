@@ -53,5 +53,5 @@ The API provides you an timestamp as number, the log level as uint, the full qua
 
 ## Limitations
 At the moment this things are not possible:
-* Define your won log format
+* Define your own log format
 * More then trace log targets (if you dont wanna write your own)
