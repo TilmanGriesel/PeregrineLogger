@@ -85,10 +85,6 @@ package de.unsustainable.peregrine.logger.targets
 			
 			// trace out
 			trace(output);
-			
-			// clean up
-			item.dispose();
-			item = null;
 		}
 		
 		public static function roundDecimal(num:Number, precision:int):Number
