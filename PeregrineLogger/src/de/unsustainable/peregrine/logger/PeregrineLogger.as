@@ -98,9 +98,9 @@ package de.unsustainable.peregrine.logger
 		/**
 		 * Fire log message to callback
 		 */
-		private function proceedLogMessage(level, argArray:Array):void
+		private function proceedLogMessage(level:int, argArray:Array):void
 		{
-			var time:Number = new Date().getTime();
+			var time:Number = new Date().time;
 			
 			var message:String = argArray[0] != null ? argArray[0] : '';
 			if(argArray.length > 1)
