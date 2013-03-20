@@ -12,9 +12,9 @@ package de.unsustainable.peregrine.logger.targets
 {
 	import flash.system.System;
 	
+	import de.unsustainable.peregrine.logger.interfaces.IPeregrineLogTarget;
 	import de.unsustainable.peregrine.logger.PeregrineLogItem;
 	import de.unsustainable.peregrine.logger.PeregrineLogLevel;
-	import de.unsustainable.peregrine.logger.interfaces.IPeregrineLogTarget;
 
 	/**
 	 * PeregrineTraceTarget
