@@ -116,8 +116,8 @@ package de.unsustainable.peregrine.logger
 					}
 				}				
 			}
-			item.dispose();
-			item = null;
+			//item.dispose();
+			//item = null;
 		}
 		
 		private static function isFilteredClass(fqcn:String):Boolean
