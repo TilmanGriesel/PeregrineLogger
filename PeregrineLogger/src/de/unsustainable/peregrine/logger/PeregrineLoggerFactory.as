@@ -10,10 +10,10 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 */
 package de.unsustainable.peregrine.logger
 {
-	import flash.utils.getQualifiedClassName;
-	
 	import de.unsustainable.peregrine.logger.interfaces.IPeregrineLogTarget;
 	import de.unsustainable.peregrine.logger.interfaces.IPeregrineLogger;
+	
+	import flash.utils.getQualifiedClassName;
 
 	/**
 	 * PeregrineLoggerFactory
@@ -106,7 +106,7 @@ package de.unsustainable.peregrine.logger
 			if(_startTS == -1) _startTS = item.time;
 			var tsDiff:Number = item.time - _startTS;
 			
-			if(_logLevel == PeregrineLogLevel.ALL || item.level == _logLevel)
+			if(itemLevelIsAllowed(item.level))
 			{
 				if(!_invertClassFilter && isFilteredClass(item.fqcn) || _invertClassFilter && !isFilteredClass(item.fqcn))
 				{
@@ -118,6 +118,12 @@ package de.unsustainable.peregrine.logger
 			}
 			//item.dispose();
 			//item = null;
+		}
+		
+		private static function itemLevelIsAllowed(level:int):Boolean
+		{
+			if(level >= _logLevel) return true;
+			else return false; 
 		}
 		
 		private static function isFilteredClass(fqcn:String):Boolean
