@@ -10,13 +10,13 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 */
 package
 {
-	import flash.display.Sprite;
-	
 	import de.unsustainable.peregrine.logger.PeregrineLogLevel;
 	import de.unsustainable.peregrine.logger.PeregrineLoggerFactory;
 	import de.unsustainable.peregrine.logger.example.MyClass;
 	import de.unsustainable.peregrine.logger.interfaces.IPeregrineLogger;
 	import de.unsustainable.peregrine.logger.targets.PeregrineTraceTarget;
+	
+	import flash.display.Sprite;
 	
 	/**
 	 * PeregrineLoggerExample
@@ -41,6 +41,10 @@ package
 			logger.warn('Hello', 'Warn');
 			logger.error('Hello', 'Error');
 			logger.fatal('Hello', 'Fatal');
+			
+			// trace log stats
+			trace('Debug message count: ', PeregrineLoggerFactory.stats.debugMessages);
+			trace('Overall message count: ', PeregrineLoggerFactory.stats.messages);
 			
 			// add some filters (only log MyClass messages)
 			PeregrineLoggerFactory.filterClasses(MyClass);

@@ -4,12 +4,14 @@ PeregrineLogger
 Simple, Small and Robust AS3 Logging Framework
 
 ## Features
-* Extendible
+* SWC Filesize 7KB
 * Lightweight & Fast
+* Extendible
 * Memory Efficent
 * Filter Functions
 * Different Log Levels
 * Memory logging
+* Log Statistics
 
 ## Sample output
 Memory logging disabled:
@@ -42,18 +44,18 @@ Memory logging enabled:
 
 ## Filter Functions
 PeregrineLogger supports class name based filtering.
-That means, that log messages can be filtered by full qualified class names (fqcn) or Classes itself.
+That means, that log messages can be filtered by full qualified class names (FQCN) or Classes itself.
 
 To enable the filter, simply type ```PeregrineLoggerFactory.filterClasses(MyClass, AnotherClass);```
 or ```PeregrineLoggerFactory.filterClasses('com.pack.example::MyClass');```
-or together... it's up to you.
+Combinations possible.
 
 Another function of the filter system is, that you are able to invert the filter.
 To exclude all classes defined in filterClasses() from logging,
 type  ```PeregrineLoggerFactory.invertClassFilter = true```
 
 ## How to extend
-Nothing is simple as that. Create a Class with an ```IPeregrineLogTarget``` implementation.
+Create a Class with an ```IPeregrineLogTarget``` implementation.
 
 Add the API:
 * ```public function log(item:PeregrineLogItem, tp:Number):void```
@@ -63,12 +65,7 @@ Add the API:
 Add your Class as a log target with the ```PeregrineLoggerFactory.addTarget``` method.
 Now you are able to access all incoming log data trough the ```PeregrineLogItem```.
 The API provides you an timestamp as number, the log level as uint, the full qualified class name as string and finally the log message as string.
-Another small and beautiful info is the tp number. The tp value defines the time past (since the first log entry was made). This is a good value to measure the application performance.
+Another value is the ```tp``` number. The tp value defines the time past (since the first log entry was made).
 
 ## Limitations
-At the moment this things are not possible:
 * Define your own log format
-* More then trace log targets (if you dont wanna write your own)
-
-## Links
-My little blog post about this http://tilmangriesel.de/2013/02/26/peregrine-logger/

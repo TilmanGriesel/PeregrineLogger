@@ -27,11 +27,20 @@ package de.unsustainable.peregrine.logger
 		//
 		//--------------------------------------------------------------------------
 		
+		public static var VERSION:String = '1.3';
+		
 		private static var _startTS:Number = -1;
 		private static var _registeredLogTargets:Vector.<IPeregrineLogTarget> = new Vector.<IPeregrineLogTarget>;
 		private static var _filteredClasses:Vector.<String> = new Vector.<String>;
 		private static var _invertClassFilter:Boolean;
 		private static var _logLevel:uint = PeregrineLogLevel.ALL;
+		
+		private static var _stats:PeregrineLogStats = new PeregrineLogStats();
+		private static var _debugMsgCount:int;
+		private static var _infogMsgCount:int;
+		private static var _warnMsgCount:int;
+		private static var _errorMsgCount:int;
+		private static var _fatalMsgCount:int;
 		
 		//--------------------------------------------------------------------------
 		//
@@ -114,11 +123,23 @@ package de.unsustainable.peregrine.logger
 					{
 						target.log(item, tsDiff);
 					}
+					updateLogStats(item.level);
 				}				
 			}
 			//item.dispose();
 			//item = null;
 		}
+		
+		public static function get stats():PeregrineLogStats
+		{
+			return _stats;
+		}
+		
+		//--------------------------------------------------------------------------
+		//
+		//  Class Methods
+		//
+		//--------------------------------------------------------------------------
 		
 		private static function itemLevelIsAllowed(level:int):Boolean
 		{
@@ -137,6 +158,20 @@ package de.unsustainable.peregrine.logger
 			}
 			// if nobody returned this method we can return false
 			return false;
+		}
+		
+		private static function updateLogStats(level:int):void
+		{
+			_stats.messages++;
+			switch(level)
+			{
+				case PeregrineLogLevel.DEBUG: _stats.debugMessages++; break;
+				case PeregrineLogLevel.INFO:  _stats.infoMessages++; break;
+				case PeregrineLogLevel.WARN:  _stats.warnMessages++; break;
+				case PeregrineLogLevel.ERROR: _stats.errorMessages++; break;
+				case PeregrineLogLevel.FATAL: _stats.fatalMessages++; break;
+				default: break;
+			}
 		}
 	}
 }
